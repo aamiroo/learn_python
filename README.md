@@ -1,6 +1,11 @@
-# python_learning
-Learning Python as programming language
 
+#Hi there 👋 I'm Amirali
+
+💻 Computer Engineering Student
+
+🐍 Currently learning Python, Linux and Git
+
+🚀 Interested in Backend Development and Open Source
 
 
 ## License

@@ -1,19 +1,32 @@
-"""
-calculator
-"""
+import math
+import sys
 
-# input return string
-first_number = int(input("adade aval ra vard kon: "))
-second_number = int(input("adade dovom ra vard kon: "))
+def mashinhesab():
+    try:
+        print()
+        a = input("enter first number (or exit): ")
 
-# # gamme dovom : mohased
-jam = first_number + second_number
-tafrig = first_number - second_number
-zarb = first_number * second_number
-tagsim = first_number / second_number
+        if a.lower() == "exit":
+            sys.exit()
+        b = input("enter second number: ")
+        a = float(a)
+        b = float(b)
 
-# gamme sevom : chaap
-print(f"{first_number} + {second_number} = {jam}")
-print(f"{first_number} - {second_number} = {tafrig}")
-print(f"{first_number} * {second_number} = {zarb}")
-print(f"{first_number} / {second_number} = {tagsim}")
+        act = input("+ - / % * : ")
+
+        if act == "+":
+            return a + b
+        elif act == "-":
+            return a - b
+        elif act == "*":
+            return a * b
+        elif act == "/":
+            return a / b
+        else:
+            return "not information"
+    except ValueError:
+        print("Please do the right thing.")
+
+while True:
+    a = mashinhesab()
+    print(a)
