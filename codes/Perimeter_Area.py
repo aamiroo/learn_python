@@ -1,5 +1,6 @@
+"""To find the perimeter and area of ​​a square and a rectangle"""
 
-def masahat ():
+def PerimeterArea ():
     a = (int(input("enter the length: ")))
     b = (int(input("enter the width: ")))
     e = (input("s or p ? "))
@@ -11,5 +12,5 @@ def masahat ():
     else:
         print("not available")
     return
-start = masahat()
+start = PerimeterArea()
 print(start)

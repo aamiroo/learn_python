@@ -1,14 +1,16 @@
+""" Simple calculator """
+
 import math
 import sys
 
-def mashinhesab():
+def calculator():
     try:
-        print()
-        a = input("enter first number (or exit): ")
+        print ("Type \"exit\" to quit.\nor")
+        a = input("Enter first number: ")
 
         if a.lower() == "exit":
             sys.exit()
-        b = input("enter second number: ")
+        b = input("Enter second number: ")
         a = float(a)
         b = float(b)
 
@@ -28,5 +30,5 @@ def mashinhesab():
         print("Please do the right thing.")
 
 while True:
-    a = mashinhesab()
-    print(a)
+    run = calculator()
+    print(run)
