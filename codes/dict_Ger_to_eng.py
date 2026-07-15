@@ -1,3 +1,8 @@
+"""
+This app is a German-English and English-German dictionary.
+With json file
+User activity
+"""
 import json
 
 words = {}
@@ -26,9 +31,17 @@ words['kammentar'] = ['coment']
 words['König'] = ['king']
 words.update(dictionary) #add json to my dict
 
+revers_words = {}
+for german , english_list in words.items():
+    for english in english_list:
+        revers_words[english.lower()] = german
+
+
 def search (words , word):
     if word in words:
         return(words[word])
+    elif word in revers_words:
+        return revers_words [word]
     else:
         return "not information"
 while True:
