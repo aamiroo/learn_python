@@ -2,30 +2,44 @@
 Displays account information.
 You can add to or withdraw from the deposit.
 """
+
 import sys
 
-class Bank:
 
-    def __init__(self, owner , balance):
+class Bank:
+    def __init__(self, owner, balance):
         self.owner = owner
         self.balance = balance
+
     def show(self):
-        print ("owner account: " , self.owner)
-        print ("Capital amount: " , self.balance)
+        print("owner account: ", self.owner)
+        print("Capital amount: ", self.balance)
+
     def deposit(self, amount):
         self.balance += amount
-    def withdraw (self, amount):
+
+    def withdraw(self, amount):
         if self.balance > amount:
             self.balance -= amount
         else:
             print("Insufficient balance!")
-account1 = Bank("ali" , 5000)
 
-Action = input("What process do you want? \n1.View account information  \n2.Add to deposit \n3.Deducting from the deposit\n" )
+
+account1 = Bank("ali", 5000)
+
+
 while True:
+
+    print("\n************ MENU ************")
+    print("1. View account information")
+    print("2. Add to deposit")
+    print("3. Deducting from the deposit")
+    print("4. Exit")
+
+    Action = input("What process do you want?\n")
     if Action.isdigit():
-        Action = int (Action)
-    if Action == "q" :
+        Action = int(Action)
+    if Action == 4:
         sys.exit()
     if Action == 1:
         account1.show()
@@ -35,5 +49,3 @@ while True:
     elif Action == 3:
         account1.withdraw(int(input("Enter the amount:")))
         account1.show()
-    
-    
