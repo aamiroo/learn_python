@@ -6,12 +6,24 @@ from colorama import init, Fore #for show color in terminal
 
 init(autoreset=True)
 import socket
+import threading
 
-HOST = "192.168.100.35"
+HOST = "192.168.4.128"
 PORT = 5000
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((HOST, PORT))
+
+def receive():
+    while True:
+        try:
+            data = client.recv(1024)
+            if not data:
+                break
+            print(f"\n{Fore.BLUE}server: {data.decode()}")
+        except:
+            break
+threading.Thread(target=receive, daemon=True).start()
 
 while True:
     print()
@@ -22,8 +34,6 @@ while True:
         break
 
     client.send(msg.encode())
-    reply = client.recv(1024).decode()
-    print(Fore.BLUE + f"server: {reply}")
-
+   
 client.close()
 print(Fore.RED + f"{HOST} is out")

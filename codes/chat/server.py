@@ -6,6 +6,7 @@ from colorama import init, Fore  # for show color in terminal
 
 init(autoreset=True)
 import socket  # for socket
+import threading
 
 HOST = "0.0.0.0"  # IP for all Interface
 PORT = 5000
@@ -18,17 +19,26 @@ print(Fore.GREEN + "Waiting for connection...")
 client, address = server.accept()
 
 print("Connected:", address)
+def receive():
+    while True:
+        try:
+            data = client.recv(1024)
+            if not data:
+                break
+            print(f"\n{Fore.BLUE}server: {data.decode()}")
+        except:
+            break
+threading.Thread(target=receive, daemon=True).start()
 
 try:
     while True:
         print()
-        msg = client.recv(1024).decode()
-        if not msg:
-            break
-        print(Fore.BLUE + f"client: {msg}")
+        reply = input(Fore.GREEN + "you: ")
         print()
 
-        reply = input((Fore.WHITE + "you: "))
+        if not reply:
+            break
+
         client.send(reply.encode())
 finally:
     client.close()
